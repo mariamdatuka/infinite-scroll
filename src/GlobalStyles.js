@@ -7,7 +7,10 @@ export const GlobalStyles=createGlobalStyle`
     box-sizing:border-box;
    }
    body{
-    font-size:16px;
+    font-size:18px;
     padding:15px 35px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
    }
 `

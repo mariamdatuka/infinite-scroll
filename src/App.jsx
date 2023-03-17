@@ -1,14 +1,31 @@
-import Getallusers from "./Getallusers"
+import Getallusers from "./Pages/Getallusers"
 import { GlobalStyles } from "./GlobalStyles"
-import SingleUser from "./SingleUser/SingleUser"
+import { RouterProvider, Route, createBrowserRouter, createRoutesFromElements } from "react-router-dom"
+import GetSingleUser from "./Pages/GetSingleUser"
+import ClickedUsers from './ClickedUsers'
+
 
 function App() {
+
   
+  const router=createBrowserRouter(
+    createRoutesFromElements(
+      <>
+        <Route path='/' element={<Getallusers/>}/>
+        <Route path='/singleuser/:id' element={<GetSingleUser/>}/>
+      </>
+    )
+   )
 
   return (
     <>
-    <GlobalStyles/>
-    <Getallusers/>
+    <ClickedUsers>
+      <>
+      <RouterProvider router={router}/>
+      <GlobalStyles/>
+      </>  
+  </ClickedUsers>
+    
     </>
   )
 }
