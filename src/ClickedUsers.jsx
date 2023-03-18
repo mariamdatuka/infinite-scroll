@@ -10,9 +10,8 @@ export const useClickedUsers = () => {
 
 const ClickedUsers = ({children}) => {
   const [clickedUsers, setClickedUsers] = useState([]);
-
-
-    const addClickedUser = (user) => {
+  
+  const addClickedUser = (user) => {
        setClickedUsers((prevClickedUsers) => [...prevClickedUsers,user]);
       };
 

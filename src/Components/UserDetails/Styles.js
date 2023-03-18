@@ -30,3 +30,29 @@ export const Box=styled.div`
     text-decoration:underline;
   }
 `
+export const Fieldset=styled.fieldset`
+  width:650px;
+
+  @media screen and (max-width:799px){
+    width:450px;
+  }
+
+  @media screen and (max-width:499px){
+    width:300px;
+  }
+`
+export const Fieldset2=styled.fieldset`
+  width:250px;
+
+  @media screen and (max-width:1200px){
+    width:650px;
+  }
+
+  @media screen and (max-width:799px){
+    width:450px;
+  }
+
+  @media screen and (max-width:499px){
+    width:300px;
+  }
+`

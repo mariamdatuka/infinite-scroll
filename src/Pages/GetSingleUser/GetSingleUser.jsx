@@ -1,11 +1,11 @@
 import React,{useState,useEffect, useRef,useCallback} from 'react'
 import {useParams} from 'react-router-dom'
-import api from '../API'
+import api from '../../API'
 import { useNavigate } from 'react-router-dom';
-import { useClickedUsers } from '../ClickedUsers';
-import UserDetails from '../Components/UserDetails/UserDetails';
-import SingleUser from '../Components/SingleUser/SingleUser'
-import styled from 'styled-components';
+import { useClickedUsers } from '../../ClickedUsers';
+import UserDetails from '../../Components/UserDetails/UserDetails';
+import SingleUser from '../../Components/SingleUser/SingleUser'
+import {Wrapper,Friends,Users,GridContainer} from './Styles'
 
 const GetSingleUser = () => {
    const [userData,setUserData]=useState([]);
@@ -79,33 +79,38 @@ const GetSingleUser = () => {
   getAllFriends();
  }, [friendsPageNum]);
 
-  const {clickedUsers, addClickedUser} =useClickedUsers();;
+  const {clickedUsers, addClickedUser} =useClickedUsers();
+  //navigates to single User page and adds clicked user in the "visited user" array
   const handleFriendClick = (friendId, user) => {
   addClickedUser(user);
   navigate(`/singleuser/${friendId}`);
-};
+ };
 
   return (
     <>
   <Wrapper> 
     <div>
-       <UserDetails userData={userData}/>
+      <UserDetails userData={userData}/>
     </div>
     <Users>
        {clickedUsers.map((item,index)=>(
         <span key={index}
-          onClick={() => handleFriendClick(item.id,item)}>
+              onClick={() => handleFriendClick(item.id,item)}>
            {`${item.prefix} ${item.name} ${item.lastName} >`} 
         </span>
        ))}
     </Users>
-    <h2>Friends:</h2>
+    <Friends>
+       <h2>Friends:</h2>
+    </Friends>
     <GridContainer>
       {friends.map((friend, index) => {
         const isLastElement = friends.length === index + 1;
         if (isLastElement) {
           return (
-            <div key={friend.id} ref={lastFriendElementRef} onClick={()=>{handleFriendClick(friend.id, friend)}}>
+            <div key={friend.id} 
+                 ref={lastFriendElementRef} 
+                 onClick={()=>{handleFriendClick(friend.id, friend)}}>
               <SingleUser user={friend}/>
             </div>
           );
@@ -125,37 +130,3 @@ const GetSingleUser = () => {
 
 export default GetSingleUser
 
-const Wrapper=styled.div`
-  border:1px solid black;
-  padding:10px;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  gap:40px;
-  & h2{
-    align-self:flex-start;
-  }
-`
-const GridContainer=styled.div`
-   display:grid;
-   grid-template-columns:repeat(4, 1fr);
-   column-gap:10px;
-   row-gap:20px;
-
-   @media screen and (max-width:1200px){
-    grid-template-columns:repeat(3, 1fr);
-   }
-   @media screen and (max-width:799px){
-    grid-template-columns:repeat(2, 1fr);
-   }
-`
-const Users=styled.div`
-  align-self:flex-start;
-  width:800px;
-  & span{
-    text-decoration:underline;
-    color:purple;
-    cursor:pointer;
-  }
-`

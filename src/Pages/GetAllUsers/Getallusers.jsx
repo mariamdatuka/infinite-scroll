@@ -1,9 +1,9 @@
 import React, {useState,useEffect,useCallback,useRef} from 'react'
-import SingleUser from '../Components/SingleUser/SingleUser';
+import SingleUser from '../../Components/SingleUser/SingleUser';
 import styled from 'styled-components';
-import api from '../API';
+import api from '../../API';
 import { useNavigate } from 'react-router-dom';
-import { useClickedUsers } from '../ClickedUsers';
+import { useClickedUsers } from '../../ClickedUsers';
 
 
 const Getallusers = () => {
@@ -58,6 +58,7 @@ useEffect(()=>{
   getAllUsers();
 }, [pageNum])
 
+//navigate to singleUser page and add visited user in "visited users" array
 const handleUserClick = (id,user) => {
   addClickedUser(user);
   navigate(`/singleuser/${id}`);

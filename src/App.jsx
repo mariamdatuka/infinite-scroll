@@ -1,13 +1,12 @@
-import Getallusers from "./Pages/Getallusers"
+import Getallusers from "./Pages/GetAllUsers/Getallusers"
 import { GlobalStyles } from "./GlobalStyles"
 import { RouterProvider, Route, createBrowserRouter, createRoutesFromElements } from "react-router-dom"
-import GetSingleUser from "./Pages/GetSingleUser"
+import GetSingleUser from "./Pages/GetSingleUser/GetSingleUser"
 import ClickedUsers from './ClickedUsers'
 
 
 function App() {
 
-  
   const router=createBrowserRouter(
     createRoutesFromElements(
       <>
@@ -18,15 +17,14 @@ function App() {
    )
 
   return (
-    <>
+  <>
     <ClickedUsers>
       <>
       <RouterProvider router={router}/>
       <GlobalStyles/>
       </>  
   </ClickedUsers>
-    
-    </>
+ </>
   )
 }
 

@@ -1,5 +1,5 @@
 import React from 'react'
-import {ImgBox,InfoBox,Box,Wrapper} from './Styles'
+import {ImgBox,InfoBox,Box,Wrapper,Fieldset,Fieldset2} from './Styles'
 
 const UserDetails = ({userData}) => {
   return (
@@ -8,7 +8,7 @@ const UserDetails = ({userData}) => {
       <ImgBox>
          <img src={`${userData.imageUrl}?v=${userData.id}`} alt="img" />
       </ImgBox>
-    <fieldset style={{width:'650px'}}>
+    <Fieldset>
       <legend>info</legend>
       <InfoBox>
         <div>
@@ -38,8 +38,8 @@ const UserDetails = ({userData}) => {
          </Box>
         </div>
       </InfoBox>
-    </fieldset>  
-    <fieldset style={{width:'200px'}}>
+    </Fieldset>  
+    <Fieldset2>
         <legend>Address</legend>
         <div>
             <h4>{userData.company?.name} {userData.company?.suffix}</h4>
@@ -68,7 +68,7 @@ const UserDetails = ({userData}) => {
               </div>
             </InfoBox>
         </div>
-    </fieldset>
+    </Fieldset2>
   </Wrapper>
 </>
   )
